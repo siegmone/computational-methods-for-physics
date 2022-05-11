@@ -1,8 +1,12 @@
 import random
+import os
 from matplotlib import pyplot as plt
 import numpy as np
 
 plt.style.use('seaborn-whitegrid')
+
+root = os.path.dirname(__file__)
+plots = os.path.join(root, 'plots')
 
 random.seed(1)
 
@@ -53,7 +57,7 @@ while d1 >= eps and d2 >= eps:
 fig, axes = plt.subplots(1, 2, figsize=(19.20, 10.80))
 axes[0].scatter(nn, mm, c='k', label='Mean')
 axes[1].scatter(nn, ddst, c='b', label='Dev St')
-fig.savefig('plots/rng_valoriattesi.png')
+fig.savefig(f'{plots}/rng_valoriattesi.png')
 
 
 # Plotting
@@ -62,4 +66,4 @@ fig.savefig('plots/rng_valoriattesi.png')
 # for i in range(N):
 #     ax.scatter(i, next(lcg), c='k')
 
-# fig.savefig('plots/numbgen.png')
+# fig.savefig(f'{plots}/numbgen.png')

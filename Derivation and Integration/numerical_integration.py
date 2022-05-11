@@ -1,12 +1,16 @@
 from random import uniform
+import os
 from matplotlib import pyplot as plt
 import numpy as np
 
 plt.style.use('seaborn-whitegrid')
 
+root = os.path.dirname(__file__)
+plots = os.path.join(root, 'plots')
+
 
 def func(x: float) -> float:
-    return np.cos(x)
+    return 1/x
 
 
 def trapezoid(A: float, B: float, N: int) -> float:
@@ -70,13 +74,13 @@ def VonNeumann_Rejection(A: float, B: float, f,
     area = area_tot * i / (N_pts - 1)
     ax.plot(xo, yo, 'bo')
     ax.plot(xi, yi, 'ro')
-    fig.savefig('plots/von_neumann_rejection_integral.png')
+    fig.savefig(f'{plots}/von_neumann_rejection_integral.png')
     plt.close()
     return area
 
 
 k: int = 100
-a: float = 0
+a: float = -1
 b: float = 1
 n: int = 1000
 # print("Metodo dei Trapezi:", trapezoid(a, b, n-1))
@@ -106,6 +110,4 @@ fig, ax = plt.subplots(figsize=(18, 10))
 ax.scatter(NN**(-0.5), dd)
 ax.set_ylim(0)
 ax.set_xlim(0)
-fig.savefig('plots/integraleallavardaci.png')
-
-
+fig.savefig(f'{plots}/integraleallavardaci.png')

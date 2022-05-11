@@ -1,7 +1,11 @@
+import os
 from matplotlib import pyplot as plt
 import numpy as np
 
 plt.style.use('seaborn-whitegrid')
+
+root = os.path.dirname(__file__)
+plots = os.path.join(root, 'plots')
 
 
 def forward_difference(f, x, step_size):
@@ -40,7 +44,7 @@ def run_derivative(x, func):
     ax2.set_ylim(0)
     ax2.set_xlim(0)
     ax2.legend()
-    fig.savefig(f"plots/derivatives_cos_{x}.png")
+    fig.savefig(f"{plots}/derivatives_cos_{x}.png")
 
 
 run_derivative(0.1, np.cos)
