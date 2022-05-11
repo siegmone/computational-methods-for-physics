@@ -166,3 +166,6 @@ tutorials/
 
 # Docker
 .devcontainer/
+
+
+.gitignore
