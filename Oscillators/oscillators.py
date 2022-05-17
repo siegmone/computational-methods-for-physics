@@ -1,3 +1,5 @@
+# Object Oriented approach to oscillators
+
 from dataclasses import dataclass, field
 import os
 import numpy as np

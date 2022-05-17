@@ -9,11 +9,13 @@ root = os.path.dirname(__file__)
 plots = os.path.join(root, 'plots')
 
 
-def func(x: float) -> float:
+def func(x: float):
+    '''Function to integrate'''
     return 1/x
 
 
 def trapezoid(A: float, B: float, N: int) -> float:
+    '''Integrates the function using the Trapezoid Method'''
     h: float = (B - A) / (N - 1)
     s: float = (func(A) + func(B)) / 2
     for i in range(1, N - 1):
@@ -22,6 +24,7 @@ def trapezoid(A: float, B: float, N: int) -> float:
 
 
 def simpson(A: float, B: float, N: int) -> float:
+    '''Integrates the function using the Simpson Method'''
     h: float = (B - A) / (N - 1)
     s: float = (func(A) + func(B)) / 3
     for i in range(1, N - 1):
@@ -33,7 +36,7 @@ def simpson(A: float, B: float, N: int) -> float:
 
 
 def monte_carlo(A: float, B: float, N: int) -> float:
-    # teorema della media integrale
+    '''Integrates the function using the Integral Mean Theorem'''
     s: float = 0
     for _ in range(N):
         s += func(uniform(A, B))
@@ -43,7 +46,7 @@ def monte_carlo(A: float, B: float, N: int) -> float:
 def VonNeumann_Rejection(A: float, B: float, f,
                          N_div: int = 1000,
                          N_pts: int = 10000) -> float:
-    # metodo del rifiuto
+    '''Integrates the function using the Von Neumann Rejection Method'''
     fig, ax = plt.subplots(figsize=(18, 10))
     x: np.ndarray = np.arange(A, B + (B/N_div), B/N_div)
     y: np.ndarray = f(x)
@@ -110,4 +113,4 @@ fig, ax = plt.subplots(figsize=(18, 10))
 ax.scatter(NN**(-0.5), dd)
 ax.set_ylim(0)
 ax.set_xlim(0)
-fig.savefig(f'{plots}/integraleallavardaci.png')
+fig.savefig(f'{plots}/test.png')

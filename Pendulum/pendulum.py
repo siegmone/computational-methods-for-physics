@@ -1,3 +1,5 @@
+# Functional Oriented approach to pendulum problems
+
 import os
 from matplotlib import pyplot as plt
 import matplotlib.animation as manimation
@@ -34,7 +36,6 @@ def simple_pendulum(th_0: float, v_0: float, w_0:float, T: float, h: float) -> n
 
 def get_pendulum_coordinates(pendulum: np.ndarray, length: float) -> np.ndarray:
     theta: np.ndarray = pendulum[:, 0]
-    
     x: np.ndarray = length*np.sin(theta)
     y: np.ndarray = -length*np.cos(theta)
     return x, y
@@ -57,6 +58,7 @@ P = simple_pendulum(th_0=np.pi/8, v_0=0, w_0=W_0, T=T, h=H)
 X, Y = get_pendulum_coordinates(P, LENGTH)
 E = get_pendulum_energy(P, LENGTH)
 
+# Creating an animation for the pendulum
 # Define the meta data for the movie
 FFMpegWriter = manimation.writers['ffmpeg']
 metadata = dict(title='Pendulum Animation', artist='matplotlib',
@@ -66,7 +68,7 @@ writer = FFMpegWriter(fps=60, metadata=metadata)
 # Initialize the movie
 fig, ax = plt.subplots(figsize=(19.20, 19.20))
 
-# plot the sine wave line
+# plot the trajectory
 line, = ax.plot(X, Y, 'r', lw=0.2)
 ax.plot(0, 0, markersize=10)
 

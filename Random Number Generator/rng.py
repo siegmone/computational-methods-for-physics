@@ -8,12 +8,11 @@ plt.style.use('seaborn-whitegrid')
 root = os.path.dirname(__file__)
 plots = os.path.join(root, 'plots')
 
-random.seed(1)
-
 
 def linear_congruential_gen(A: float = 0, B: float = 1,
                             seed: float = 1, m: int = 2**48,
-                            a: int = 25214903917, c: int = 11):
+                            a: int = 25214903917, c: int = 11) -> None:
+    '''Creates a linear congruential generator'''
     while True:
         yield A + (seed / m) * (B - A)
         seed = (a*seed + c) % m
